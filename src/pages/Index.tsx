@@ -1,6 +1,7 @@
 import DonationForm from "@/components/DonationForm";
+import ZakatCalculator from "@/components/ZakatCalculator";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Heart, Star, Shield } from "lucide-react";
+import { Heart, Star, Shield, BookOpen } from "lucide-react";
 
 const Index = () => {
   return (
@@ -14,7 +15,6 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background" />
 
         <div className="relative z-10 container mx-auto px-4 pt-12 pb-8">
-          {/* Logo / Brand */}
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-3">
               Zakath <span className="text-primary">Paise</span>
@@ -25,11 +25,23 @@ const Index = () => {
           </div>
 
           {/* Quran Verse */}
-          <div className="max-w-2xl mx-auto mb-10 text-center">
+          <div className="max-w-2xl mx-auto mb-6 text-center">
             <blockquote className="text-sm md:text-base text-muted-foreground font-body italic border-l-4 border-accent pl-4 py-2 text-left">
               "Take from their wealth a charity by which you purify them and cause them increase"
               <cite className="block text-xs mt-1 not-italic text-accent font-medium">— Quran 9:103</cite>
             </blockquote>
+          </div>
+
+          {/* Allah message */}
+          <div className="max-w-2xl mx-auto mb-10">
+            <div className="bg-primary/5 border border-primary/15 rounded-xl p-4 flex items-start gap-3">
+              <BookOpen className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+              <p className="text-sm text-foreground/80 font-body">
+                <span className="font-semibold text-primary">Every Zakat reaches Allah ﷻ</span> — The Prophet ﷺ said: 
+                <em>"Charity does not decrease wealth. No one forgives another except that Allah increases his honor."</em> 
+                <span className="text-xs text-muted-foreground"> (Muslim)</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -52,6 +64,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Zakat Calculator */}
+      <section className="container mx-auto px-4 pb-10">
+        <div className="max-w-lg mx-auto bg-card rounded-2xl p-6 md:p-8 shadow-lg border border-border">
+          <ZakatCalculator />
+        </div>
+      </section>
+
       {/* Donation Form */}
       <section className="container mx-auto px-4 pb-16">
         <div className="max-w-lg mx-auto bg-card rounded-2xl p-6 md:p-8 shadow-lg border border-border">
@@ -69,6 +88,9 @@ const Index = () => {
         </p>
         <p className="text-xs text-muted-foreground font-body mt-1">
           May Allah accept your contributions and bless you abundantly.
+        </p>
+        <p className="text-xs text-muted-foreground font-body mt-3 pt-3 border-t border-border/50">
+          Developed with ❤️ by <span className="font-medium text-foreground">Muhammad Adnan VV</span>
         </p>
       </footer>
     </div>
