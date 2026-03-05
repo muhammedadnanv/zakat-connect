@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import DonationForm from "@/components/DonationForm";
 import ZakatCalculator from "@/components/ZakatCalculator";
 import RecentDonations from "@/components/RecentDonations";
@@ -5,7 +6,47 @@ import IslamicGreeting from "@/components/IslamicGreeting";
 import heroBg from "@/assets/hero-bg.jpg";
 import { Heart, Star, Shield, BookOpen } from "lucide-react";
 
+const QURAN_VERSES = [
+  {
+    text: "Take from their wealth a charity by which you purify them and cause them increase.",
+    ref: "Quran 9:103",
+  },
+  {
+    text: "Who is it that would loan Allah a goodly loan so He may multiply it for him many times over?",
+    ref: "Quran 2:245",
+  },
+  {
+    text: "Those who spend their wealth in the way of Allah and then do not follow up what they have spent with reminders or injury will have their reward with their Lord.",
+    ref: "Quran 2:262",
+  },
+  {
+    text: "The example of those who spend their wealth in the way of Allah is like a seed which grows seven ears; in each ear is a hundred grains.",
+    ref: "Quran 2:261",
+  },
+  {
+    text: "And establish prayer and give Zakat, and whatever good you put forward for yourselves — you will find it with Allah.",
+    ref: "Quran 2:110",
+  },
+  {
+    text: "Never will you attain the good [reward] until you spend [in the way of Allah] from that which you love.",
+    ref: "Quran 3:92",
+  },
+  {
+    text: "Indeed, the men who practice charity and the women who practice charity and have loaned Allah a goodly loan — it will be multiplied for them, and they will have a noble reward.",
+    ref: "Quran 57:18",
+  },
+  {
+    text: "And be steadfast in prayer and regular in charity: And whatever good ye send forth for your souls before you, ye shall find it with Allah.",
+    ref: "Quran 2:110",
+  },
+];
+
 const Index = () => {
+  const verse = useMemo(
+    () => QURAN_VERSES[Math.floor(Math.random() * QURAN_VERSES.length)],
+    []
+  );
+
   return (
     <>
       <IslamicGreeting />
@@ -28,10 +69,11 @@ const Index = () => {
               </p>
             </div>
 
+            {/* Rotating Quran Verse */}
             <div className="max-w-2xl mx-auto mb-6 text-center">
               <blockquote className="text-sm md:text-base text-muted-foreground font-body italic border-l-4 border-accent pl-4 py-2 text-left">
-                "Take from their wealth a charity by which you purify them and cause them increase"
-                <cite className="block text-xs mt-1 not-italic text-accent font-medium">— Quran 9:103</cite>
+                "{verse.text}"
+                <cite className="block text-xs mt-1 not-italic text-accent font-medium">— {verse.ref}</cite>
               </blockquote>
             </div>
 
