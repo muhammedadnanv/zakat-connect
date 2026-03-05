@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart, Send, CheckCircle } from "lucide-react";
+import { playIslamicChime } from "@/lib/islamicSound";
 
 const PRESET_AMOUNTS = [500, 1000, 2000, 5000];
 const UPI_ID = "muhammed.39@superyes";
@@ -21,6 +22,7 @@ const DonationForm = () => {
     )}`;
     window.location.href = upiUrl;
     setStep("confirm");
+    playIslamicChime();
   };
 
   if (step === "confirm") {
