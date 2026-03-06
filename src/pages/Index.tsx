@@ -3,45 +3,24 @@ import DonationForm from "@/components/DonationForm";
 import ZakatCalculator from "@/components/ZakatCalculator";
 import RecentDonations from "@/components/RecentDonations";
 import IslamicGreeting from "@/components/IslamicGreeting";
+import LanguageSwitch from "@/components/LanguageSwitch";
 import heroBg from "@/assets/hero-bg.jpg";
 import { Heart, Star, Shield, BookOpen } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 const QURAN_VERSES = [
-  {
-    text: "Take from their wealth a charity by which you purify them and cause them increase.",
-    ref: "Quran 9:103",
-  },
-  {
-    text: "Who is it that would loan Allah a goodly loan so He may multiply it for him many times over?",
-    ref: "Quran 2:245",
-  },
-  {
-    text: "Those who spend their wealth in the way of Allah and then do not follow up what they have spent with reminders or injury will have their reward with their Lord.",
-    ref: "Quran 2:262",
-  },
-  {
-    text: "The example of those who spend their wealth in the way of Allah is like a seed which grows seven ears; in each ear is a hundred grains.",
-    ref: "Quran 2:261",
-  },
-  {
-    text: "And establish prayer and give Zakat, and whatever good you put forward for yourselves — you will find it with Allah.",
-    ref: "Quran 2:110",
-  },
-  {
-    text: "Never will you attain the good [reward] until you spend [in the way of Allah] from that which you love.",
-    ref: "Quran 3:92",
-  },
-  {
-    text: "Indeed, the men who practice charity and the women who practice charity and have loaned Allah a goodly loan — it will be multiplied for them, and they will have a noble reward.",
-    ref: "Quran 57:18",
-  },
-  {
-    text: "And be steadfast in prayer and regular in charity: And whatever good ye send forth for your souls before you, ye shall find it with Allah.",
-    ref: "Quran 2:110",
-  },
+  { text: "Take from their wealth a charity by which you purify them and cause them increase.", ref: "Quran 9:103" },
+  { text: "Who is it that would loan Allah a goodly loan so He may multiply it for him many times over?", ref: "Quran 2:245" },
+  { text: "Those who spend their wealth in the way of Allah and then do not follow up what they have spent with reminders or injury will have their reward with their Lord.", ref: "Quran 2:262" },
+  { text: "The example of those who spend their wealth in the way of Allah is like a seed which grows seven ears; in each ear is a hundred grains.", ref: "Quran 2:261" },
+  { text: "And establish prayer and give Zakat, and whatever good you put forward for yourselves — you will find it with Allah.", ref: "Quran 2:110" },
+  { text: "Never will you attain the good [reward] until you spend [in the way of Allah] from that which you love.", ref: "Quran 3:92" },
+  { text: "Indeed, the men who practice charity and the women who practice charity and have loaned Allah a goodly loan — it will be multiplied for them, and they will have a noble reward.", ref: "Quran 57:18" },
+  { text: "And be steadfast in prayer and regular in charity: And whatever good ye send forth for your souls before you, ye shall find it with Allah.", ref: "Quran 2:110" },
 ];
 
 const Index = () => {
+  const { t } = useI18n();
   const verse = useMemo(
     () => QURAN_VERSES[Math.floor(Math.random() * QURAN_VERSES.length)],
     []
@@ -50,6 +29,7 @@ const Index = () => {
   return (
     <>
       <IslamicGreeting />
+      <LanguageSwitch />
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
@@ -62,10 +42,10 @@ const Index = () => {
           <div className="relative z-10 container mx-auto px-4 pt-12 pb-8">
             <div className="text-center mb-10">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-3">
-                Zakath <span className="text-primary">Paise</span>
+                {t("heroTitle")} <span className="text-primary">{t("heroBrand")}</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground font-body max-w-xl mx-auto">
-                Fulfill your Zakat obligation with ease and send your blessings along with it
+                {t("heroSubtitle")}
               </p>
             </div>
 
@@ -81,9 +61,8 @@ const Index = () => {
               <div className="bg-primary/5 border border-primary/15 rounded-xl p-4 flex items-start gap-3">
                 <BookOpen className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <p className="text-sm text-foreground/80 font-body">
-                  <span className="font-semibold text-primary">Every Zakat reaches Allah ﷻ</span> — The Prophet ﷺ said: 
-                  <em>"Charity does not decrease wealth. No one forgives another except that Allah increases his honor."</em> 
-                  <span className="text-xs text-muted-foreground"> (Muslim)</span>
+                  <span className="font-semibold text-primary">{t("everyZakatReaches")}</span> — {t("hadithText")}
+                  <span className="text-xs text-muted-foreground"> {t("hadithSource")}</span>
                 </p>
               </div>
             </div>
@@ -94,9 +73,9 @@ const Index = () => {
         <section className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12">
             {[
-              { icon: Shield, label: "Secure UPI" },
-              { icon: Heart, label: "With Dua" },
-              { icon: Star, label: "Blessed" },
+              { icon: Shield, label: t("secureUpi") },
+              { icon: Heart, label: t("withDua") },
+              { icon: Star, label: t("blessed") },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="text-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
@@ -119,7 +98,7 @@ const Index = () => {
         <section className="container mx-auto px-4 pb-10">
           <div className="max-w-lg mx-auto bg-card rounded-2xl p-6 md:p-8 shadow-lg border border-border">
             <h2 className="text-2xl font-display font-bold text-foreground mb-6 text-center">
-              Give Your Zakat
+              {t("giveYourZakat")}
             </h2>
             <DonationForm />
           </div>
@@ -135,13 +114,13 @@ const Index = () => {
         {/* Footer */}
         <footer className="border-t border-border py-6 text-center">
           <p className="text-xs text-muted-foreground font-body">
-            © {new Date().getFullYear()} Zakath Paise. All rights reserved.
+            {t("copyright")(new Date().getFullYear())}
           </p>
           <p className="text-xs text-muted-foreground font-body mt-1">
-            May Allah accept your contributions and bless you abundantly.
+            {t("footerBlessing")}
           </p>
           <p className="text-xs text-muted-foreground font-body mt-3 pt-3 border-t border-border/50">
-            Developed with ❤️ by <span className="font-medium text-foreground">Muhammad Adnan VV</span>
+            {t("developedBy")} <span className="font-medium text-foreground">Muhammad Adnan VV</span>
           </p>
         </footer>
       </div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useI18n } from "@/lib/i18n";
 
 const IslamicGreeting = () => {
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     const timer = setTimeout(() => setFadeOut(true), 2400);
@@ -36,7 +38,7 @@ const IslamicGreeting = () => {
             animation: "greeting-text 1s ease-out 0.3s forwards",
           }}
         >
-          بِسْمِ ٱللَّٰهِ
+          {t("bismillah")}
         </p>
         <p
           className="text-lg md:text-xl font-body opacity-0"
@@ -45,7 +47,7 @@ const IslamicGreeting = () => {
             animation: "greeting-text 1s ease-out 0.8s forwards",
           }}
         >
-          In the Name of Allah, the Most Gracious, the Most Merciful
+          {t("bismillahTranslation")}
         </p>
         <div
           className="mt-6 w-24 h-0.5 mx-auto opacity-0"
